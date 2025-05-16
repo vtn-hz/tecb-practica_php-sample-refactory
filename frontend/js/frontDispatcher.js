@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () =>
         };
 
         const id = studentIdInput.value;
-        const method = id ? 'PUT' : 'POST';
         if (id) formData.id = id;
 
         try {
