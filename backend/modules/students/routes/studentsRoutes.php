@@ -1,6 +1,6 @@
 <?php
 require_once("./config/databaseConfig.php");
-require_once("./controllers/studentsController.php");
+require_once("./modules/students/controllers/studentsController.php");
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':

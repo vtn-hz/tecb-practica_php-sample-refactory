@@ -1,5 +1,5 @@
 <?php
-require_once("./models/students.php");
+require_once("./modules/students/models/students.php");
 
 function handleGet($conn) {
     if (isset($_GET['id'])) {

@@ -14,6 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once("./routeDispatcher.php");
+require_once("./dispatcher.php");
 dispatchRoute( $_SERVER['REQUEST_URI'] );
 ?>
