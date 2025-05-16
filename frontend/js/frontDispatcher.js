@@ -27,15 +27,11 @@ document.addEventListener('DOMContentLoaded', () =>
         const method = id ? 'PUT' : 'POST';
         if (id) formData.id = id;
 
-        try 
-        {
-            const response = await fetch(API_URL, {
-                method,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            });
-
-            if (response.ok) {
+        try {
+            const method = formData.id ? put : post; 
+            const success = await method(API_URL, formData); 
+            
+            if (success) {
                 studentForm.reset();
                 studentIdInput.value = '';
                 await fetchStudents();
@@ -48,12 +44,9 @@ document.addEventListener('DOMContentLoaded', () =>
     });
 
     // Obtener estudiantes y renderizar tabla
-    async function fetchStudents() 
-    {
-        try 
-        {
-            const res = await fetch(API_URL);
-            const students = await res.json();
+    async function fetchStudents() {
+        try {
+            const students = await get(API_URL);
 
             //Limpiar tabla de forma segura.
             studentTableBody.replaceChildren();
@@ -105,19 +98,13 @@ document.addEventListener('DOMContentLoaded', () =>
     }
 
     // Eliminar estudiante
-    async function deleteStudent(id) 
-    {
+    async function deleteStudent(id) {
         if (!confirm("¿Seguro que querés borrar este estudiante?")) return;
 
-        try 
-        {
-            const response = await fetch(API_URL, {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id }),
-            });
+        try {
+            const success = await del (API_URL, id);
 
-            if (response.ok) {
+            if (success) {
                 await fetchStudents();
             } else {
                 alert("Error al borrar");
