@@ -1,4 +1,9 @@
 RewriteEngine On
+
+# Si no se especifica ningún recurso (ej. /backend/), redirigir a server.php
+RewriteRule ^$ server.php [QSA,L]
+
+# Si no existe el archivo o directorio, redirigir también
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ server.php [QSA,L]
