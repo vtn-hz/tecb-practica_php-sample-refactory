@@ -1,6 +1,6 @@
 <?php
 
-function methodNotAllow () 
+function methodNotAllow ( $conn ) // needs to keep same interface
 {
     http_response_code(405);
     echo json_encode(["error" => "Método no permitido"]);
@@ -12,7 +12,7 @@ function createHandler ($method, $customHandlers = [], $prefix = 'handle') : cal
         'POST'      => "{$prefix}Post",
         'GET'       => "{$prefix}Get",
         'PUT'       => "{$prefix}Put",
-        'PATCH'     => "{$prefix}Put"
+        'PATCH'     => "{$prefix}Put",
         'DELETE'    => "{$prefix}Delete"
     ];
 
