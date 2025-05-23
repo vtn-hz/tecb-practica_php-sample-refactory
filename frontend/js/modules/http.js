@@ -1,9 +1,12 @@
 
 async function get ( url ) {
     const response = await window.fetch(url);
-    const jsonizedResponse = await response.json();
+    const data = await response.json();
     
-    return jsonizedResponse;
+    return { 
+        status: response.ok, 
+        data: data
+    };
 }
 
 async function post ( url, body ) {
@@ -13,7 +16,12 @@ async function post ( url, body ) {
         body: JSON.stringify(body)
     });
 
-    return response.ok;
+    const data = await response.json();
+
+    return { 
+        status: response.ok, 
+        data: data
+    };
 }
 
 async function put ( url, body ) {
@@ -23,7 +31,12 @@ async function put ( url, body ) {
         body: JSON.stringify(body)
     });
 
-    return response.ok;
+    const data = await response.json();
+
+    return { 
+        status: response.ok, 
+        data: data 
+    };
 }
 
 async function del ( url, id ) {
@@ -32,6 +45,11 @@ async function del ( url, id ) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({id})
     });
+    
+    const data = await response.json();
 
-    return response.ok;
+    return { 
+        status: response.ok, 
+        data: data 
+    };
 }
