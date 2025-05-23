@@ -1,5 +1,5 @@
 <?php
-require_once("./config/databaseConfig.php");
+// no podria incluir directamente la conexion?
 
 function getAllStudents($conn) {
     $sql = "SELECT * FROM students";
