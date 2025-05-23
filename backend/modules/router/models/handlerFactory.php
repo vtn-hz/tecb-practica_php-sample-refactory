@@ -6,7 +6,7 @@ function methodNotAllow ()
     echo json_encode(["error" => "Método no permitido"]);
 }
 
-function createHandler ($method, $prefix = 'handle', $customHandlers = []) : callable 
+function createHandler ($method, $customHandlers = [], $prefix = 'handle') : callable 
 {
     $handlers = [
         'POST'      => "{$prefix}Post",
