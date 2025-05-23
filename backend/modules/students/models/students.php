@@ -1,4 +1,6 @@
 <?php
+require_once("./config/databaseConfig.php");
+
 function getAllStudents($conn) {
     $sql = "SELECT * FROM students";
     return $conn->query($sql);

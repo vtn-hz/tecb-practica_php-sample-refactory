@@ -1,4 +1,6 @@
 <?php
+require_once("./modules/subjects/models/subjects.php");
+
 function getAllSubjects($conn) {
     $sql = "SELECT * FROM subjects";
     return $conn->query($sql);
