@@ -3,7 +3,8 @@ async function fetchStudents() {
     const elements = await getElements();
 
     try {
-        const students = await get(API_URL);
+        const response = await get(API_URL);
+        const students = response.data;
         //Limpiar tabla de forma segura.
         elements.studentTableBody.replaceChildren();
         //acá innerHTML es seguro a XSS porque no hay entrada de usuario

@@ -16,14 +16,14 @@
 
         try {
             const method = formData.id ? put : post; 
-            const success = await method(API_URL, formData); 
+            const response = await method(API_URL, formData); 
             
-            if (success) {
+            if (response.success) {
                 elements.studentForm.reset();
                 elements.studentIdInput.value = '';
                 await fetchStudents();
             } else {
-                alert("Error al guardar");
+                alert( response.data.message );
             }
         } catch (err) {
             console.error(err);

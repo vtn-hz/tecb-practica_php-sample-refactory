@@ -4,7 +4,7 @@ async function get ( url ) {
     const data = await response.json();
     
     return { 
-        status: response.ok, 
+        success: response.ok, 
         data: data
     };
 }
@@ -19,7 +19,7 @@ async function post ( url, body ) {
     const data = await response.json();
 
     return { 
-        status: response.ok, 
+        success: response.ok, 
         data: data
     };
 }
@@ -34,7 +34,7 @@ async function put ( url, body ) {
     const data = await response.json();
 
     return { 
-        status: response.ok, 
+        success: response.ok, 
         data: data 
     };
 }
@@ -49,7 +49,7 @@ async function del ( url, id ) {
     const data = await response.json();
 
     return { 
-        status: response.ok, 
+        success: response.ok, 
         data: data 
     };
 }

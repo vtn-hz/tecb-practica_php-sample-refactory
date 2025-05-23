@@ -4,9 +4,9 @@ async function deleteStudent(id) {
     if (!confirm("¿Seguro que querés borrar este estudiante?")) return;
 
     try {
-        const success = await del (API_URL, id);
+        const response = await del (API_URL, id);
 
-        if (success) {
+        if (response.success) {
             await fetchStudents();
         } else {
             alert("Error al borrar");
