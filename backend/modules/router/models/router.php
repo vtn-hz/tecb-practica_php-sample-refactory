@@ -1,5 +1,12 @@
 <?php 
 
+/**
+ * ToDo...
+ *  This module reads every directory searching 
+ *  route.xml file, this is inefficient so its
+ *  need a routerCache.php and reload it by
+ *  command line when a new route was added. 
+ */
 function getRoutes(): array
 {
     $routes = [];
