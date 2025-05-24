@@ -67,7 +67,7 @@ async function render ( parent, fields, sourceUrl, actionHandlers) {
     parent.replaceChildren( htmlChildren );
 } 
 
-export async function create ( parentSelector, { fields, sourceUrl, actionHandlers: { edit, remove } } ) {
+export async function createTbody ( parentSelector, { fields, sourceUrl, actionHandlers: { edit, remove } } ) {
     await domReady ();
     
     const parent  = document.querySelector( parentSelector );

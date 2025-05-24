@@ -1,3 +1,5 @@
+import { create }
+
 async function fetchStudents() {
     const API_URL = getEndpoint();
     const elements = await getElements();
