@@ -1,5 +1,5 @@
 
-async function get ( url ) {
+export async function get ( url ) {
     const response = await window.fetch(url);
     const data = await response.json();
     
@@ -9,7 +9,7 @@ async function get ( url ) {
     };
 }
 
-async function post ( url, body ) {
+export async function post ( url, body ) {
     const response = await window.fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -24,7 +24,7 @@ async function post ( url, body ) {
     };
 }
 
-async function put ( url, body ) {
+export async function put ( url, body ) {
     const response = await window.fetch(url, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -39,7 +39,7 @@ async function put ( url, body ) {
     };
 }
 
-async function del ( url, id ) {
+export async function del ( url, id ) {
     const response = await window.fetch(url, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
