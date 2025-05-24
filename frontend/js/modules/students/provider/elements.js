@@ -1,4 +1,4 @@
-const getElements = async () => {
+export const getElements = async () => {
     await new Promise(resolve => {
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', resolve);
@@ -8,11 +8,11 @@ const getElements = async () => {
     }); // wait until dom loaded
 
     return {
-        studentForm: document.getElementById('studentForm'),
-        studentTableBody: document.getElementById('studentTableBody'),
-        fullnameInput: document.getElementById('fullname'),
-        emailInput: document.getElementById('email'),
-        ageInput: document.getElementById('age'),
-        studentIdInput: document.getElementById('studentId')
+        studentForm:        document.getElementById('studentForm'),
+        studentTableBody:   document.getElementById('studentTableBody'),
+        fullnameInput:      document.getElementById('fullname'),
+        emailInput:         document.getElementById('email'),
+        ageInput:           document.getElementById('age'),
+        studentIdInput:     document.getElementById('studentId')
     };
 };

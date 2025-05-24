@@ -1,19 +1,19 @@
 import { get } from '../modules/http.js'
 
-function createActionCell ({ edit, remove }) {
+function createActionCell (item, { edit, remove }) {
     const td = document.createElement('td');
 
     const editBtn = document.createElement('button');
 
     editBtn.textContent = 'Editar';
     editBtn.className = 'w3-button w3-blue w3-small';
-    editBtn.addEventListener('click', edit);
+    editBtn.addEventListener('click', event => edit(item, event) );
 
     const deleteBtn = document.createElement('button');
 
     deleteBtn.textContent = 'Borrar';
     deleteBtn.className = 'w3-button w3-red w3-small w3-margin-left';
-    deleteBtn.addEventListener('click', remove);
+    deleteBtn.addEventListener('click', event => remove(item, event) );
 
     td.appendChild(editBtn);
     td.appendChild(deleteBtn);
@@ -29,13 +29,13 @@ function createCell(text) {
 
 function createRow(fields, item, { edit, remove }) {
     const tr = document.createElement('tr');
-    
+
     fields.forEach(field => {
         const td = createCell(item[field]);
         tr.appendChild(td);
     });
 
-    const actionCell = createActionCell({ edit, remove });
+    const actionCell = createActionCell(item, { edit, remove });
     tr.appendChild(actionCell);
 
     return tr;

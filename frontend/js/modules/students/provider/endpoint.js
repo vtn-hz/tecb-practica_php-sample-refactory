@@ -1,3 +1,2 @@
-const getEndpoint = () => 
-    '/project-refactory/backend/api/students';
 
+export const studentsUrl = '/project-refactory/backend/api/students';
