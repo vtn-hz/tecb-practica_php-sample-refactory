@@ -13,7 +13,7 @@ function getSubjectById($conn, $id) {
     return $stmt->get_result();
 }
 
-function createSubjects($conn, $code, $name, $semesterNumber) {
+function createSubject($conn, $code, $name, $semesterNumber) {
     $sql = "INSERT INTO subjects (code, name, semester_number) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssi", $code, $name, $semesterNumber);
