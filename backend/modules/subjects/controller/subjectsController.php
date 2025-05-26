@@ -17,21 +17,48 @@ function handleGet($conn) {
 
 function handlePost($conn) {
     $input = json_decode(file_get_contents("php://input"), true);
-    if (createSubject($conn, $input['code'], $input['name'], $input['semester_number'])) {
+    $status = false;
+    $errorMsg = "No se pudo agregar";
+
+    try{
+        $status = createSubject($conn, $input['code'], $input['name'], $input['semester_number']);
+    }catch(mysqli_sql_exception $e) {
+        $status = false;    
+
+        if ($e->getCode() === 1062) {
+            $errorMsg = "El código {$input['code']} ya se encuentra utilizado";
+        }   
+    }
+
+    if ($status) {
         echo json_encode(["message" => "Materia agregada correctamente"]);
     } else {
         http_response_code(500);
-        echo json_encode(["error" => "No se pudo agregar"]);
+        echo json_encode(["error" => $errorMsg]);
     }
 }
 
 function handlePut($conn) {
     $input = json_decode(file_get_contents("php://input"), true);
-    if (updateSubject($conn, $input['id'], $input['code'], $input['name'], $input['semester_number'])) {
+    $status = false;
+    $errorMsg = "No se pudo actualizar";
+
+    try{
+        $status = updateSubject($conn, $input['id'], $input['code'], $input['name'], $input['semester_number']);
+    }catch(mysqli_sql_exception $e) {
+        $status = false;    
+
+        if ($e->getCode() === 1062) {
+            $errorMsg = "El código {$input['code']} ya se encuentra utilizado";
+        }   
+    }
+
+
+    if ($status) {
         echo json_encode(["message" => "Actualizada correctamente"]);
     } else {
         http_response_code(500);
-        echo json_encode(["error" => "No se pudo actualizar"]);
+        echo json_encode(["error" => $errorMsg]);
     }
 }
 
