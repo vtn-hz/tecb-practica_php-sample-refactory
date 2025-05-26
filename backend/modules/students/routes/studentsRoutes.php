@@ -9,7 +9,7 @@ $handler = createHandler( $_SERVER['REQUEST_METHOD'], [
         
         if ($input['age'] <= 16) {
             http_response_code(400);
-            echo json_encode(["message" => "Los estudiantes deben ser mayores a 16 años"]);
+            echo json_encode(["error" => "Los estudiantes deben ser mayores a 16 años"]);
             exit;
         }
 

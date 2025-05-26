@@ -52,7 +52,7 @@ createSubmitHandler(elements.studentForm, studentsUrl,
         },
         
         fail: (response) => {
-            alert( response.data.message );
+            alert( response.data.error );
         }
     }
 }); 
