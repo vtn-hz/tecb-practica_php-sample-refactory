@@ -2,7 +2,8 @@
 require_once("./modules/subjects/models/subjects.php");
 
 function handleGet($conn) {
-    if (isset($_GET['id'])) {
+    $input = json_decode(file_get_contents("php://input"), true);
+    if (isset($input['id'])) {
         $result = getSubjectById($conn, $input['id']);
         echo json_encode($result->fetch_assoc());
     } else {
