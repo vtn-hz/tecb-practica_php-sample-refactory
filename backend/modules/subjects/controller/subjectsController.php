@@ -3,7 +3,7 @@ require_once("./modules/subjects/models/subjects.php");
 
 function handleGet($conn) {
     if (isset($_GET['id'])) {
-        $result = getSubjectById($conn, $_GET['id']);
+        $result = getSubjectById($conn, $input['id']);
         echo json_encode($result->fetch_assoc());
     } else {
         $result = getAllSubjects($conn);
