@@ -2,6 +2,7 @@
 require_once("./modules/students/models/students.php");
 
 function handleGet($conn) {
+    $input = json_decode(file_get_contents("php://input"), true);
     if (isset($input['id'])) {
         $result = getStudentById($conn, $input['id']);
         echo json_encode($result->fetch_assoc());
