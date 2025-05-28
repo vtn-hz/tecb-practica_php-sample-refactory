@@ -2,8 +2,8 @@
 require_once("./modules/students/models/students.php");
 
 function handleGet($conn) {
-    if (isset($_GET['id'])) {
-        $result = getStudentById($conn, $_GET['id']);
+    if (isset($input['id'])) {
+        $result = getStudentById($conn, $input['id']);
         echo json_encode($result->fetch_assoc());
     } else {
         $result = getAllStudents($conn);
