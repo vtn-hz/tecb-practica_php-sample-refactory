@@ -1,6 +1,6 @@
 <?php
 require_once("./modules/students/models/students.php");
-require_once("./modules/student_subjects/models/student_subjects.php");
+require_once("./modules/studentSubjects/models/studentSubjects.php");
 
 function handleGet($conn) {
     $input = json_decode(file_get_contents("php://input"), true);
