@@ -1,5 +1,6 @@
 <?php
 require_once("./modules/subjects/models/subjects.php");
+require_once("./modules/student_subjects/models/student_subjects.php");
 
 function handleGet($conn) {
     $input = json_decode(file_get_contents("php://input"), true);
@@ -65,6 +66,13 @@ function handlePut($conn) {
 
 function handleDelete($conn) {
     $input = json_decode(file_get_contents("php://input"), true);
+
+    if (hasStudentsBySubjectId($conn, $input['id'])) {
+        http_response_code(400);
+        echo json_encode(["error" => "No se puede eliminar la materia porque está asociada a uno o más estudiantes"]);
+        return;
+    }
+
     if (deleteSubject($conn, $input['id'])) {
         echo json_encode(["message" => "Eliminada correctamente"]);
     } else {

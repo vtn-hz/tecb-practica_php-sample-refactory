@@ -28,7 +28,7 @@ const tbody = createTbody(elements.studentTableBody, {
                 if (response.success) {
                     tbody.render();  
                 } else {
-                    alert("Error al borrar");
+                    alert(response.data.error);
                 }
             } catch (err) {
                 console.error(err);

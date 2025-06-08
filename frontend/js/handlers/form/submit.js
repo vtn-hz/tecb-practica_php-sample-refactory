@@ -13,7 +13,9 @@ function parseData (dataWatcher) {
 
     for (const key in dataWatcher) {
         const inputElement = dataWatcher[key];
-        data[key] = inputElement.value;
+        data[key]   = inputElement.type === 'checkbox' 
+                    ? inputElement.checked 
+                    : inputElement.value;
     }
 
     if (!data.id) {
