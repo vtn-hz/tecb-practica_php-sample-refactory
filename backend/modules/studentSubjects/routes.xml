@@ -1,0 +1,5 @@
+<routes>
+    <module name="studentSubjects">
+        <route name="/api/student/subjects">studentSubjectsRoutes.php</route>
+    </module>
+</routes>
